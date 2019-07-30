@@ -1,0 +1,103 @@
+
+/*============ Padding setting ============*/
+$numberPX:
+	"10" 10px,
+	"15" 15px,
+	"20" 20px,
+	"25" 25px,
+	"30" 30px;
+
+@each $i in $numberPX {
+	.padding-#{nth($i, 1)}{
+		padding: nth($i, 2);
+	}
+	.padding-top-#{nth($i, 1)}{
+		padding-top: nth($i, 2);
+	}
+	.padding-left-#{nth($i, 1)}{
+		padding-left: nth($i,2);
+	}
+	.padding-right-#{nth($i, 1)}{
+		padding-right: nth($i,2);
+	}
+	.padding-bottom-#{nth($i, 1)}{
+		padding-bottom: nth($i,2);
+	}
+
+	.margin-#{nth($i, 1)}{
+		margin: nth($i, 2);
+	}
+	.margin-top-#{nth($i, 1)}{
+		margin-top: nth($i, 2);
+	}
+	.margin-left-#{nth($i, 1)}{
+		margin-left: nth($i, 2);
+	}
+	.margin-right-#{nth($i, 1)}{
+		margin-right: nth($i, 2);
+	}
+	.margin-bottom-#{nth($i, 1)}{
+		margin-bottom: nth($i, 2);
+	}
+}
+
+
+
+/*============ Text Align setting ============*/
+$textAlign:
+	"top" top,
+	"left" left,
+	"right" right,
+	"bottom" bottom;
+@each $i in $textAlign{
+	.text-algin-#{nth($i, 1)}{
+		text-align: nth($i, 2);
+	}
+}
+
+
+
+/*============ Position setting ============*/
+$positionSetting:
+	"relative" relative,
+	"absolute" absolute,
+	"fixed" fixed,
+	"inherit" inherit,
+	"sticky" sticky,
+	"initial" initial;
+@each $i in $positionSetting{
+	.position-#{nth($i, 1)}{
+		position: nth($i, 2);
+	}
+}
+
+
+
+/*============ Text color setting ============*/
+$colorText:
+	"red" red,
+	"blue" blue,
+	"green" green;
+@each $i in $colorText{
+	.text-color-#{nth($i, 1)}{
+		color: nth($i, 2);
+	}
+}
+
+
+
+/*============ Link color setting ============*/
+a{
+	color: #34495e;
+	&:hover,
+	&:focus{
+		color: #135ca6;
+		outline: none;
+	}
+}
+
+p{
+	margin: 0;
+	padding: 0;
+	color: #eee;
+}
