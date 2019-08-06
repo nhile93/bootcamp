@@ -77,7 +77,7 @@ $colorText:
 	"blue" blue,
 	"green" green;
 @each $i in $colorText{
-	.text-color-#{nth($i, 1)}{
+	.text-#{nth($i, 1)}{
 		color: nth($i, 2);
 	}
 }
