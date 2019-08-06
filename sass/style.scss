@@ -75,7 +75,11 @@ $positionSetting:
 $colorText:
 	"red" red,
 	"blue" blue,
-	"green" green;
+	"green" green,
+	"black" #000,
+	"white" #fff,
+	"grey" #ccc,
+	"light-grey" #eee;
 @each $i in $colorText{
 	.text-#{nth($i, 1)}{
 		color: nth($i, 2);
