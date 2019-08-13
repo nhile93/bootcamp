@@ -1,0 +1,14 @@
+{
+    "liveServer.settings.multiRootWorkspaceName": "bootcamp",
+
+    "liveSassCompile.settings.formats": [{
+        "format": "compressed",
+        "extensionName": ".min.css",
+        "savePath": "~/../css/"
+        }
+    ],
+    
+    "git.enableSmartCommit": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.ChromeDebuggingAttachment": true
+}
