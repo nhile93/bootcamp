@@ -102,20 +102,32 @@ html, p{
 	color: #000;
 	font-size: 14px;
 }
+ol,ul,li{list-style: none;}
 
 .container{
 
 	&:after{
-		display: block;
-		height: 0;
-		overflow: hidden;
+		content: "";
 		clear: both;
+		display: table;
 	}
+}
+
+.clearfix:after{
+	content: "";
+	clear: both;
+	display: table;
 }
 
 .color-game{
 
-	max-width: 250px;
+	.square-group{
+		max-width: 250px;
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
 
 	.square{
 		width: 50px;
@@ -129,5 +141,19 @@ html, p{
 	#color-text{
 		text-transform: uppercase;
 		font-weight: bold;
+	}
+
+	.control-area{
+		display: flex;
+		justify-content: space-between;
+		align-content: center;
+		align-self: center;
+
+		.mode-play{
+			display: flex;
+			justify-content: flex-end;
+			align-content: center;
+			align-self: center;
+		}
 	}
 }
