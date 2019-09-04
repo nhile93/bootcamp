@@ -76,8 +76,8 @@ document.getElementById("demo_show").innerText = txt;
 
 
 
-var numSquare = 6;
-var colors = generateRandomColor(6);
+var numSquares = 6;
+var colors = generateRandomColor(numSquares);
 
 var squares = document.querySelectorAll(".square");
 var pickedColor = pickColor();
@@ -85,7 +85,9 @@ var colorDisplay = document.getElementById("color-text");
 colorDisplay.textContent = pickedColor;
 var messDisplay = document.querySelector(".message");
 var resetBtn = document.querySelector("#reset-game");
-
+var easyBtn = document.querySelector("#easyMode");
+var hardBtn = document.querySelector("#hardMode");
+var modeBtn = document.querySelectorAll(".mode-btn");
 
 for(var i = 0; i<squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
@@ -135,9 +137,10 @@ function randomColor(){
     return "rgb("+ r +", " + g + ", " + b +")";
 }
 
+//reset game
 resetBtn.addEventListener("click", function(){
     //make new game
-    colors = generateRandomColor(6);
+    colors = generateRandomColor(numSquares);
 
     //pick a new random array
     pickedColor = pickColor();
@@ -153,33 +156,55 @@ resetBtn.addEventListener("click", function(){
     messDisplay.textContent = "";
 });
 
-//pratice game
-// var toAdd = document.createDocumentFragment();
 
-// var easyBtn = document.querySelector(".easyMode");
-// var hardBtn = document.querySelector(".hardMode");
-// var frameSquare = document.querySelector(".game-practise");
-
-// function generateSquare(num){
-    
-    
-//     for(var i = 0; i<numSquare; i++){
-//         var squareDiv = document.createElement("div");
-//         squareDiv.className = "square";
-//         toAdd.appendChild(squareDiv);
-//     }
-//     frameSquare.appendChild(toAdd);
-// }
-
-
+// //choose Easy Mode
 // easyBtn.addEventListener("click", function(){
+//     hardBtn.classList.remove("selected");
+//     easyBtn.classList.add("selected");
+//     numSquares = 3;
+//     colors = generateRandomColor(numSquares);
+//     pickedColor = pickColor();
+//     colorDisplay.textContent = pickedColor;
+//     resetBtn.textContent = "New game";
+//     messDisplay.textContent = "";
 
-//     numSquare = 3;
-//     generateSquare(numSquare);
+//     for(var i=0; i<squares.length; i++){
+
+//         if(colors[i]){
+//             squares[i].style.backgroundColor = colors[i];
+//         }
+//         else{
+//             squares[i].style.display = "none";
+//         }
+//     }
 // });
 
+
+// //choose Hard Mode
 // hardBtn.addEventListener("click", function(){
-//     numSquare = 6;
-//     generateSquare(numSquare);
+//     easyBtn.classList.remove("selected");
+//     hardBtn.classList.add("selected");
+//     numSquares = 6;
+//     colors = generateRandomColor(numSquares);
+//     pickedColor = pickColor();
+//     colorDisplay.textContent = pickedColor;
+//     resetBtn.textContent = "New game";
+//     messDisplay.textContent = "";
+
+//     for(var i=0; i<squares.length; i++){
+//         squares[i].style.display = "block";
+//         squares[i].style.backgroundColor = colors[i];
+//     }
 // });
 
+
+//update function choose mode
+for(var i=0; i<modeBtn.length; i++){
+
+    modeBtn[i].addEventListener("click", function(){
+        modeBtn[0].classList.remove("selected");
+        modeBtn[1].classList.remove("selected");
+        
+        this.classList.add("selected");
+    });
+}

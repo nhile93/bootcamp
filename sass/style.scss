@@ -155,5 +155,15 @@ ol,ul,li{list-style: none;}
 			align-content: center;
 			align-self: center;
 		}
+
+		.mode-btn{
+			background: grey;
+			color: white;
+			font-weight: bold;
+		}
+
+		.selected{
+			background: green;
+		}
 	}
 }
