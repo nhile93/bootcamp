@@ -89,6 +89,13 @@ var easyBtn = document.querySelector("#easyMode");
 var hardBtn = document.querySelector("#hardMode");
 var modeBtn = document.querySelectorAll(".mode-btn");
 
+init();
+
+function init(){
+
+}
+
+
 for(var i = 0; i<squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
 
@@ -139,21 +146,7 @@ function randomColor(){
 
 //reset game
 resetBtn.addEventListener("click", function(){
-    //make new game
-    colors = generateRandomColor(numSquares);
-
-    //pick a new random array
-    pickedColor = pickColor();
-
-    //change dispay color to match pick color
-    colorDisplay.textContent = pickedColor;
-
-    //change color of squares
-    for(var i = 0; i<squares.length; i++){
-        squares[i].style.backgroundColor = colors[i];
-    }
-    resetBtn.textContent = "New game";
-    messDisplay.textContent = "";
+    reset();
 });
 
 
@@ -206,5 +199,34 @@ for(var i=0; i<modeBtn.length; i++){
         modeBtn[1].classList.remove("selected");
         
         this.classList.add("selected");
+
+        this.textContent ==="Easy" ? numSquares = 3 : numSquares = 6;
+
+        reset();
     });
+}
+
+function reset() {
+    //make new game
+    colors = generateRandomColor(numSquares);
+
+    //pick a new random array
+    pickedColor = pickColor();
+
+    //change dispay color to match pick color
+    colorDisplay.textContent = pickedColor;
+
+    //change color of squares
+    for(var i = 0; i<squares.length; i++){
+
+        if(colors[i]){
+            squares[i].style.display = "block";
+            squares[i].style.backgroundColor = colors[i];
+        }
+        else {
+            squares[i].style.display = "none";
+        }
+    }
+    resetBtn.textContent = "New game";
+    messDisplay.textContent = "";
 }
