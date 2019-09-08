@@ -64,23 +64,14 @@ movies.forEach(function(movie){
 
 document.getElementById("demo_show").innerText = txt;
 
-//Color game
-// var colors =[
-//     "rgb(255, 0, 0)",
-//     "rgb(255, 255, 0)",
-//     "rgb(0, 255, 0)",
-//     "rgb(0, 255, 255)",
-//     "rgb(0, 0, 255)",
-//     "rgb(255, 0, 255)"
-// ];
-
 
 
 var numSquares = 6;
-var colors = generateRandomColor(numSquares);
+var colors = [];
+//var pickedColor = pickColor();
+var pickedColor;
 
 var squares = document.querySelectorAll(".square");
-var pickedColor = pickColor();
 var colorDisplay = document.getElementById("color-text");
 colorDisplay.textContent = pickedColor;
 var messDisplay = document.querySelector(".message");
@@ -92,28 +83,51 @@ var modeBtn = document.querySelectorAll(".mode-btn");
 init();
 
 function init(){
+    
+    setupButton();
 
+    setupSquares();
+
+    reset();
 }
 
+function setupButton(){
 
-for(var i = 0; i<squares.length; i++){
-    squares[i].style.backgroundColor = colors[i];
+    //mode button
+    for(var i=0; i<modeBtn.length; i++){
 
-    squares[i].addEventListener("click", function(){
-       //alert("Click square "+ (squares[i]+1));
+        modeBtn[i].addEventListener("click", function(){
+            modeBtn[0].classList.remove("selected");
+            modeBtn[1].classList.remove("selected");
+            
+            this.classList.add("selected");
+    
+            this.textContent ==="Easy" ? numSquares = 3 : numSquares = 6;
+    
+            reset();
+        });
+    }
+}
 
-       var clickColor = this.style.backgroundColor;
+function setupSquares(){
+    for(var i = 0; i<squares.length; i++){
 
-        if(clickColor === pickedColor){
-            messDisplay.textContent = "Correct!";
-            changeColor(clickColor);
-            resetBtn.textContent ="Play Again?";
-        }
-        else {
-            messDisplay.textContent = "Wrong color, selectagain";
-            this.style.backgroundColor = "#fff";
-        }
-    });
+        squares[i].addEventListener("click", function(){
+           //alert("Click square "+ (squares[i]+1));
+    
+           var clickColor = this.style.backgroundColor;
+    
+            if(clickColor === pickedColor){
+                messDisplay.textContent = "Correct!";
+                changeColor(clickColor);
+                resetBtn.textContent ="Play Again?";
+            }
+            else {
+                messDisplay.textContent = "Wrong color, select again";
+                this.style.backgroundColor = "#fff";
+            }
+        });
+    }
 }
 
 function changeColor(color){
@@ -149,62 +163,6 @@ resetBtn.addEventListener("click", function(){
     reset();
 });
 
-
-// //choose Easy Mode
-// easyBtn.addEventListener("click", function(){
-//     hardBtn.classList.remove("selected");
-//     easyBtn.classList.add("selected");
-//     numSquares = 3;
-//     colors = generateRandomColor(numSquares);
-//     pickedColor = pickColor();
-//     colorDisplay.textContent = pickedColor;
-//     resetBtn.textContent = "New game";
-//     messDisplay.textContent = "";
-
-//     for(var i=0; i<squares.length; i++){
-
-//         if(colors[i]){
-//             squares[i].style.backgroundColor = colors[i];
-//         }
-//         else{
-//             squares[i].style.display = "none";
-//         }
-//     }
-// });
-
-
-// //choose Hard Mode
-// hardBtn.addEventListener("click", function(){
-//     easyBtn.classList.remove("selected");
-//     hardBtn.classList.add("selected");
-//     numSquares = 6;
-//     colors = generateRandomColor(numSquares);
-//     pickedColor = pickColor();
-//     colorDisplay.textContent = pickedColor;
-//     resetBtn.textContent = "New game";
-//     messDisplay.textContent = "";
-
-//     for(var i=0; i<squares.length; i++){
-//         squares[i].style.display = "block";
-//         squares[i].style.backgroundColor = colors[i];
-//     }
-// });
-
-
-//update function choose mode
-for(var i=0; i<modeBtn.length; i++){
-
-    modeBtn[i].addEventListener("click", function(){
-        modeBtn[0].classList.remove("selected");
-        modeBtn[1].classList.remove("selected");
-        
-        this.classList.add("selected");
-
-        this.textContent ==="Easy" ? numSquares = 3 : numSquares = 6;
-
-        reset();
-    });
-}
 
 function reset() {
     //make new game
